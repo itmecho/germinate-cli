@@ -438,7 +438,7 @@ dependencies = [
  "anyhow",
  "clap",
  "germinate",
- "openssl",
+ "native-tls",
  "tokio",
 ]
 
