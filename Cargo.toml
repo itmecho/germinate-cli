@@ -15,3 +15,7 @@ germinate = "0.2.0"
 anyhow = "1.0.31"
 clap = "2.33.1"
 tokio = "0.2.21"
+openssl = "0.10"
+
+[features]
+tls-vendored = ["openssl/vendored"]

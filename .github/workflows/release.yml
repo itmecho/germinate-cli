@@ -52,12 +52,12 @@ jobs:
           command: build
           args: --release --target ${{ matrix.target }}
 
-      # - name: Build target (musl)
-      #   if: matrix.target == 'x86_64-unknown-linux-musl'
-      #   uses: actions-rs/cargo@v1
-      #   with:
-      #     command: build
-      #     args: --release --features tls-vendored --target ${{ matrix.target }}
+      - name: Build target (musl)
+        if: matrix.target == 'x86_64-unknown-linux-musl'
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release --features tls-vendored --target ${{ matrix.target }}
 
       - name: Prepare build artifacts
         run: |
