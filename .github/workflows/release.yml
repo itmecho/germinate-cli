@@ -102,13 +102,6 @@ jobs:
       - name: Generate checksums
         run: for file in germinate-*; do openssl dgst -sha256 -r "$file" | awk '{print $1}' > "${file}.sha256"; done
 
-      - name: Generate release notes
-        run: |
-          # Temporary fix for https://github.com/actions/setup-go/issues/14
-          export PATH=$PATH:$(go env GOPATH)/bin
-          go get -u github.com/git-chglog/git-chglog/cmd/git-chglog
-          git-chglog -c .github/chglog/release.yml $(git describe --tags) > RELEASE.md
-
       - name: Create GitHub release ${{ matrix.target }}
         uses: softprops/action-gh-release@v1
         with:
@@ -119,6 +112,5 @@ jobs:
             germinate-x86_64-unknown-linux-musl.tar.gz.sha256
             germinate-x86_64-apple-darwin.tar.gz
             germinate-x86_64-apple-darwin.tar.gz.sha256
-          body_path: RELEASE.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
