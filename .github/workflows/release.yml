@@ -104,6 +104,7 @@ jobs:
 
       - name: Create GitHub release ${{ matrix.target }}
         uses: softprops/action-gh-release@v1
+        draft: true
         with:
           files: |
             germinate-x86_64-unknown-linux-gnu.tar.gz
